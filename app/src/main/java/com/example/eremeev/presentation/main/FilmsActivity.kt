@@ -46,9 +46,9 @@ class FilmsActivity : AppCompatActivity() {
 
         binding.recycler.adapter = filmsAdapter
 
+        setToolbarComponents()
         setSupportActionBar(binding.toolbar)
 
-        setToolbarComponents()
         disableButton(binding.topFilmsButton)
         viewModel.requestTopFilms()
     }
