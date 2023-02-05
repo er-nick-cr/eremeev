@@ -22,8 +22,4 @@ class DatabaseDatasource(
         return filmsDao.getFilms()
             .map(::mapDatabaseFilms)
     }
-
-    fun checkIsFavorite(id: Int): Single<Boolean> {
-        return filmsDao.checkIsFavorite(id)
-    }
 }

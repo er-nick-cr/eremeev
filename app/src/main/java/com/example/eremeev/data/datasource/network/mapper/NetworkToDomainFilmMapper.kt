@@ -1,9 +1,9 @@
 package com.example.eremeev.data.datasource.network.mapper
 
-import com.example.eremeev.data.datasource.network.entity.Example
+import com.example.eremeev.data.datasource.network.entity.film.NetworkFilm
 import com.example.eremeev.domain.entity.Film
 
-fun mapNetworkFilms(data: Example): List<Film> {
+fun mapNetworkFilms(data: NetworkFilm): List<Film> {
     val films = data.films
 
     return films.map { film ->

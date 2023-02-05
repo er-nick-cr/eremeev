@@ -18,25 +18,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        app:collapseIcon="@drawable/ic_back"
+        app:titleTextColor="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/toolbarTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/text_primary"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            tools:text="Популярные" />
-
-    </com.google.android.material.appbar.MaterialToolbar>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -46,6 +36,42 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/topFilmsButton"
+        android:layout_width="155dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="@color/accent_primary"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/top_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/favoritesButton"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/favoritesButton"
+        android:layout_width="155dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="@color/accent_primary"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/favorite_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/topFilmsButton" />
 
     <include
         android:id="@+id/error"

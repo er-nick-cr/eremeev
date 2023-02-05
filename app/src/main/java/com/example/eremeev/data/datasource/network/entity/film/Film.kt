@@ -1,7 +1,5 @@
-package com.example
+package com.example.eremeev.data.datasource.network.entity.film
 
-import com.example.eremeev.data.datasource.network.entity.Country
-import com.example.eremeev.data.datasource.network.entity.Genre
 import com.google.gson.annotations.SerializedName
 
 class Film(

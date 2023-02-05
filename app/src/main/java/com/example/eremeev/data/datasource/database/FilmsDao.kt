@@ -19,7 +19,4 @@ interface FilmsDao {
 
     @Query("SELECT * FROM films")
     fun getFilms(): Single<List<FilmDbModel>>
-
-    @Query("SELECT EXISTS (SELECT 1 FROM films WHERE id= :id)")
-    fun checkIsFavorite(id: Int): Single<Boolean>
 }

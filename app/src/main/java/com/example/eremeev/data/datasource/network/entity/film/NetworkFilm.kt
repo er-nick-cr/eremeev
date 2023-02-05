@@ -1,9 +1,8 @@
-package com.example.eremeev.data.datasource.network.entity
+package com.example.eremeev.data.datasource.network.entity.film
 
-import com.example.Film
 import com.google.gson.annotations.SerializedName
 
-class Example(
+class NetworkFilm(
     @SerializedName("pagesCount")
     var pagesCount: Int,
     @SerializedName("films")

@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Eremeev</string>
     <string name="films_title_top">Популярные</string>
-    <string name="error">Произошла ошибка при загрузке данных, проверьте подключение к сети</string>
+    <string name="films_title_favorite">Избранное</string>
+    <string name="search">Поиск</string>
+    <string name="network_error">Произошла ошибка при загрузке данных, проверьте подключение к сети</string>
+    <string name="database_error">Неудачно. Повторите попытку</string>
     <string name="button_text">Повторить</string>
+    <string name="genres">Жанры:</string>
+    <string name="countries">Страны:</string>
+    <string name="top_button">Популярные</string>
+    <string name="favorite_button">Избранное</string>
 </resources>

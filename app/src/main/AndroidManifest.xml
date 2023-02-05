@@ -10,10 +10,18 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/ic_app"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eremeev"
         tools:targetApi="31">
+        <activity
+            android:name=".presentation.detailed.DetailedFilmActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".presentation.main.FilmsActivity"
             android:exported="true">
