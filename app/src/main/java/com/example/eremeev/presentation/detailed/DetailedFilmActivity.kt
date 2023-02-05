@@ -25,18 +25,20 @@ class DetailedFilmActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detailed_film)
 
         val id = intent.getIntExtra("id", 0)
-
-        binding.error.button.setOnClickListener { repeatRequest(id) }
-
-        binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
-
         val detailedFilmAdapter = DetailedFilmAdapter(::setSpannedText)
+
+        with(binding) {
+            error.button.setOnClickListener { repeatRequest(id) }
+            toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+        }
 
         with(viewModel) {
             detailedFilmLiveData.observe(this@DetailedFilmActivity) { detailedFilm ->
                 detailedFilmAdapter.items = listOf(detailedFilm)
             }
-            isLoadingLiveData.observe(this@DetailedFilmActivity) { isLoading -> binding.progressBar.isVisible = isLoading }
+            isLoadingLiveData.observe(this@DetailedFilmActivity) {
+                    isLoading -> binding.progressBar.isVisible = isLoading
+            }
             errorLiveData.observe(this@DetailedFilmActivity) { setError() }
         }
 

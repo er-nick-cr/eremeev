@@ -3,16 +3,12 @@ package com.example.eremeev.data.datasource.network.mapper
 import com.example.eremeev.data.datasource.network.entity.film.NetworkFilm
 import com.example.eremeev.domain.entity.Film
 
-fun mapNetworkFilms(data: NetworkFilm): List<Film> {
-    val films = data.films
-
-    return films.map { film ->
-        Film(
-            id = film.filmId,
-            posterUrl = film.posterUrl,
-            name = film.nameRu,
-            genre = film.genres.first().genre.capitalize() + " (${film.year})",
-            isFavorite = false,
-        )
-    }
+fun mapNetworkFilm(film: NetworkFilm): Film {
+    return Film(
+        id = film.filmId,
+        posterUrl = film.posterUrl,
+        name = film.nameRu,
+        genre = film.genres.first().genre.capitalize() + " (${film.year})",
+        isFavorite = false,
+    )
 }

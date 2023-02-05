@@ -1,25 +1,33 @@
 package com.example.eremeev.data.datasource.database
 
-import com.example.eremeev.data.datasource.database.mapper.mapDatabaseFilms
+import com.example.eremeev.data.datasource.database.mapper.mapDatabaseFilm
 import com.example.eremeev.data.datasource.database.mapper.mapDomainFilm
 import com.example.eremeev.domain.entity.Film
 import io.reactivex.Completable
 import io.reactivex.Single
 
-class DatabaseDatasource(
-    private val filmsDao: FilmsDao,
-) {
+interface DatabaseDatasource {
+    fun addToFavorite(film: Film): Completable
+    fun deleteFromFavorite(id: Int): Completable
+    fun getFilms(): Single<List<Film>>
+}
 
-    fun addToFavorite(film: Film): Completable {
+class DatabaseDatasourceImpl(
+    private val filmsDao: FilmsDao,
+) : DatabaseDatasource {
+
+    override fun addToFavorite(film: Film): Completable {
         return filmsDao.addToFavorite(mapDomainFilm(film))
     }
 
-    fun deleteFromFavorite(id: Int): Completable {
+    override fun deleteFromFavorite(id: Int): Completable {
         return filmsDao.deleteFromFavorite(id)
     }
 
-    fun getFilms(): Single<List<Film>> {
+    override fun getFilms(): Single<List<Film>> {
         return filmsDao.getFilms()
-            .map(::mapDatabaseFilms)
+            .map { films ->
+                films.map { film -> mapDatabaseFilm(film) }
+            }
     }
 }

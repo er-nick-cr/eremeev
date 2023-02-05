@@ -22,7 +22,7 @@ private fun getGenres(genresNetwork: List<Genre>): String {
         genres += ", ${genre.genre}"
     }
 
-    return genres.replaceFirst(", ", " ")
+    return genres.replaceFirst(", ", "")
 }
 
 private fun getCountries(countriesNetwork: List<Country>): String {
@@ -32,5 +32,5 @@ private fun getCountries(countriesNetwork: List<Country>): String {
         countries += ", ${country.country}"
     }
 
-    return countries.replaceFirst(", ", " ")
+    return countries.replaceFirst(", ", "")
 }

@@ -55,10 +55,6 @@ class FilmsActivity : AppCompatActivity() {
 
     private fun setToolbarComponents() = with(binding) {
         toolbar.inflateMenu(R.menu.films_search_menu)
-
-
-
-
         toolbar.title = getString(R.string.films_title_top)
     }
 
@@ -68,9 +64,10 @@ class FilmsActivity : AppCompatActivity() {
         val searchItem: MenuItem? = menu?.findItem(R.id.action_search)
         val searchView: SearchView = searchItem?.actionView as SearchView
 
-        searchView.queryHint = getString(R.string.search)
-
-        searchView.addQueryTextListener { searchValue -> viewModel.searchFilms(searchValue) }
+        with(searchView) {
+            queryHint = getString(R.string.search)
+            addQueryTextListener { searchValue -> viewModel.searchFilms(searchValue) }
+        }
 
         return super.onCreateOptionsMenu(menu)
     }
@@ -93,6 +90,7 @@ class FilmsActivity : AppCompatActivity() {
 
     private fun onFilmClick(film: Film) {
         val intent = Intent(this@FilmsActivity, DetailedFilmActivity::class.java)
+
         intent.putExtra("id", film.id)
         startActivity(intent)
     }

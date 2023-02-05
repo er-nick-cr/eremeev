@@ -1,20 +1,28 @@
 package com.example.eremeev.data.datasource.network
 
 import com.example.eremeev.data.datasource.network.mapper.mapNetworkDetailedFilm
-import com.example.eremeev.data.datasource.network.mapper.mapNetworkFilms
+import com.example.eremeev.data.datasource.network.mapper.mapNetworkFilm
 import com.example.eremeev.domain.entity.DetailedFilm
 import com.example.eremeev.domain.entity.Film
 import io.reactivex.Single
 
-class NetworkDatasource(
-    private val filmsApi: FilmsApi,
-) {
+interface NetworkDatasource {
+    fun getFilms(): Single<List<Film>>
+    fun getDetailedFilm(id: Int): Single<DetailedFilm>
+}
 
-    fun getFilms(): Single<List<Film>> {
-        return filmsApi.getFilms().map(::mapNetworkFilms)
+class NetworkDatasourceImpl(
+    private val filmsApi: FilmsApi,
+) : NetworkDatasource {
+
+    override fun getFilms(): Single<List<Film>> {
+        return filmsApi.getFilms().map { networkFilms ->
+            networkFilms.networkFilms
+                .map { networkFilm -> mapNetworkFilm(networkFilm) }
+        }
     }
 
-    fun getDetailedFilm(id: Int): Single<DetailedFilm> {
+    override fun getDetailedFilm(id: Int): Single<DetailedFilm> {
         return filmsApi.getDetailedFilm(id).map(::mapNetworkDetailedFilm)
     }
 }
